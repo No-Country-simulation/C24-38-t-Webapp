@@ -9,7 +9,7 @@ export default function App() {
         Hola Mundo
       </Button>
       <Button variant="outline">
-        Hola Prueba
+        Hola Prueb
       </Button>
       Hola un cambio
     </Fragment>
