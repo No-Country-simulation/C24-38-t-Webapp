@@ -8,6 +8,7 @@ export default function App() {
       <Button variant="outline">
         Hola Mundo
       </Button>
+      Hola un cambio
     </Fragment>
   )
 }
