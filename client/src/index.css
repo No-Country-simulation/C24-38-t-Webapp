@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Agbalumo";
+  src: url("../src/assets/fonts/Agbalumo-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PollerOne";
+  src: url("../src/assets/fonts/PollerOne-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -60,6 +74,8 @@
 }
 
 @theme inline {
+  --font-pollerone: PollerOne, "sans-serif";
+  --font-agbalumo: Agbalumo, "sans-serif";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -94,6 +110,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
