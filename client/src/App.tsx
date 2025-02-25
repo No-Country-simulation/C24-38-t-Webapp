@@ -1,4 +1,4 @@
-import WelcomeScreen from "./screens/WelcomeScreen";
+import WelcomeScreen from "./pages/WelcomeScreen";
 
 export default function App() {
   return <WelcomeScreen />;
