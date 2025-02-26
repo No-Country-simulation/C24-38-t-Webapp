@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 
 interface FormData {
-  dni: string;
+  documento: string;
   email: string;
-  password: string;
+  contrasena: string;
 }
 
 const Register = () => {
   const [formData, setFormData] = useState<FormData>({
-    dni: "",
+    documento: "",
     email: "",
-    password: "",
+    contrasena: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     // Validar que solo se ingresen números en el campo DNI
-    if (name === "dni") {
+    if (name === "documento") {
       const numericValue = value.replace(/\D/g, "");
       setFormData({
         ...formData,
@@ -74,9 +74,9 @@ const Register = () => {
                 <img src="./icons/dni_icon.png" />
                 <input
                   type="text"
-                  id="dni"
-                  name="dni"
-                  value={formData.dni}
+                  id="documento"
+                  name="documento"
+                  value={formData.documento}
                   onChange={handleChange}
                   pattern="\d*"
                   required
@@ -103,14 +103,14 @@ const Register = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="password">Contraseña</label>
+              <label htmlFor="contrasena">Contraseña</label>
               <div className="h-[48px] w-[320px] bg-white border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 flex gap-4">
                 <img src="./icons/password_icon.png" />
                 <input
                   type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
+                  id="contrasena"
+                  name="contrasena"
+                  value={formData.contrasena}
                   onChange={handleChange}
                   required
                   placeholder="************"
