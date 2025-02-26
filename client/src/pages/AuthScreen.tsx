@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const AuthScreen = () => {
   return (
     <div className="flex justify-center items-center min-h-screen w-full overflow-hidden bg-[#DCF7F9]">
@@ -12,14 +14,14 @@ const AuthScreen = () => {
             </h3>
           </div>
           <div className="mt-12">
-            <button className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-3 px-12 rounded-[20px] transition duration-300 transform hover:scale-105">
+            <Link to="/login" className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-3 px-12 rounded-[20px] transition duration-300 transform hover:scale-105">
               Iniciar sesión
-            </button>
+            </Link>
           </div>
           <div className="mt-12">
-            <button className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-3 px-12 rounded-[20px] transition duration-300 transform hover:scale-105">
+            <Link to="/register" className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-3 px-12 rounded-[20px] transition duration-300 transform hover:scale-105">
               Registrarse
-            </button>
+            </Link>
           </div>
         </div>
       </div>
