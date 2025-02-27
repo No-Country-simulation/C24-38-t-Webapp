@@ -5,17 +5,16 @@ import com.equipo_c24_38.backend.model.dto.DatosRespuestaUsuario;
 import com.equipo_c24_38.backend.model.entity.Usuario;
 import com.equipo_c24_38.backend.service.UsuarioService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(value = "/api/v1", method = RequestMethod.POST)
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -29,7 +28,7 @@ public class UsuarioController {
     public ResponseEntity<DatosRespuestaUsuario> registrar(@RequestBody @Valid DatosRegistrarUsuario datosRegistrarUsuario) {
         Usuario usuario = usuarioService.agregar(datosRegistrarUsuario);
         DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(usuario);
-        return ResponseEntity.ok().body(datosRespuestaUsuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(datosRespuestaUsuario);
     }
 
     @PostMapping("/iniciarSesion")
