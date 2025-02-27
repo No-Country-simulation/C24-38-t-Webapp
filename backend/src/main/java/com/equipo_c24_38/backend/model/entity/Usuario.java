@@ -58,4 +58,23 @@ public class Usuario {
         return fechaRegistro;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public void setFechaRegistro(LocalDateTime fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
 }
