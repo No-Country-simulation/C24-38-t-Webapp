@@ -4,12 +4,8 @@ import com.equipo_c24_38.backend.model.entity.Paciente;
 import java.time.LocalDateTime;
 
 public record DatosRespuestaPaciente(
-        Long id,
-        String documento,
-        String email,
-        String contrasena,
-        LocalDateTime fechaRegistro,
-        Paciente.Genero genero,
+        String nombre,
+        Genero genero,
         int telefono,
         String capital,
         String pais,
@@ -17,16 +13,13 @@ public record DatosRespuestaPaciente(
         int edad,
         String tipoDeSangre,
         String idioma,
-        Paciente.EstadoCivil estadoCivil,
+        //String documento,
+        EstadoCivil estadoCivil,
         int hijos
 ) {
     public DatosRespuestaPaciente(Paciente paciente) {
         this(
-                paciente.getId(),
-                paciente.getDocumento(),
-                paciente.getEmail(),
-                paciente.getContrasena(),
-                paciente.getFechaRegistro(),
+                paciente.getNombre(),
                 paciente.getGenero(),
                 paciente.getTelefono(),
                 paciente.getCapital(),
@@ -35,6 +28,7 @@ public record DatosRespuestaPaciente(
                 paciente.getEdad(),
                 paciente.getTipoDeSangre(),
                 paciente.getIdioma(),
+                //paciente.getDocumento(),
                 paciente.getEstadoCivil(),
                 paciente.getHijos()
         );

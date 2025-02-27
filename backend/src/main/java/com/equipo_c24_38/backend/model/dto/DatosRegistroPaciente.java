@@ -6,32 +6,29 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record DatosRegistroPaciente(
-        @NotBlank
-        String documento,
-        @NotBlank
-        @Email
-        String email,
-        @NotBlank
-        String contrasena,
-        @NotNull
-        Paciente.Genero genero,
-        @NotNull
+        @NotBlank(message = "{Nombre es obligatorio}")
+        String nombre,
+        @NotNull(message = "{Genero es obligatorio}")
+        Paciente genero,
+        @NotNull(message = "{Telefono es obligatorio}")
         int telefono,
-        @NotBlank
+        @NotBlank(message = "{Ubigeo capital es obligatoria}")
         String capital,
-        @NotBlank
+        @NotBlank(message = "{Pais es obligatorio}")
         String pais,
-        @NotBlank
+        @NotBlank(message = "{Direccion es obligatoria}")
         String direccion,
-        @NotNull
+        @NotNull(message = "{edad es obligatorio}")
         int edad,
-        @NotBlank
+        @NotBlank(message = "{Tipo de sangre es obligatorio}")
         String tipoDeSangre,
-        @NotBlank
+        @NotBlank(message = "{Idiomas es necesario}")
         String idioma,
-        @NotNull
-        Paciente.EstadoCivil estadoCivil,
-        @NotNull
+        //@NotBlank(message = "{Descripcion o historia}")
+        //String documento,
+        @NotNull(message = "{Estado civil es obligatorio}")
+        Paciente estadoCivil,
+        @NotNull(message = "{Numero de hijos es obligatorio}")
         int hijos
 ) {
 }

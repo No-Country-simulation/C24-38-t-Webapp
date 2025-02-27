@@ -1,19 +1,32 @@
 package com.equipo_c24_38.backend.model.entity;
 
+import com.equipo_c24_38.backend.model.dto.DatosRegistroPaciente;
+import com.equipo_c24_38.backend.model.dto.EstadoCivil;
+import com.equipo_c24_38.backend.model.dto.Genero;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
+@Entity(name = "Paciente")
 @Table(name = "pacientes")
-public class Paciente extends Usuario {
+@Getter
+@Setter
+@EqualsAndHashCode(of = "id")
+@NoArgsConstructor
+public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_paciente;
+    private int id;
 
     @OneToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     private Usuario usuario;
+
     @Enumerated(EnumType.STRING)
     private Genero genero;
+    private String nombre;
     private int telefono;
     private String capital;
     private String pais;
@@ -21,78 +34,26 @@ public class Paciente extends Usuario {
     private int edad;
     private String tipoDeSangre;
     private String idioma;
+    //private String documento;
     @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
+
     private int hijos;
 
-    public enum Genero {
-        MASCULINO, FEMENINO, OTRO
-    }
-    public enum EstadoCivil {
-        SOLTERO, CASADO, DIVORCIADO, VIUDO
-    }
-    // Getters y constructores
-    public Paciente() {
-        super();
-    }
-
-    public Paciente(String documento, String email, String contrasena, Genero genero, int telefono, String capital, String pais, String direccion, int edad, String tipoDeSangre, String idioma, EstadoCivil estadoCivil, int hijos) {
-        super(documento, email, contrasena);
-        this.genero = genero;
-        this.telefono = telefono;
-        this.capital = capital;
-        this.pais = pais;
-        this.direccion = direccion;
-        this.edad = edad;
-        this.tipoDeSangre = tipoDeSangre;
-        this.idioma = idioma;
-        this.estadoCivil = estadoCivil;
-        this.hijos = hijos;
+    public Paciente(DatosRegistroPaciente datosRegistroPaciente, Usuario usuario) {
+        this.usuario = usuario;
+        this.genero = datosRegistroPaciente.genero().getGenero(); 
+        this.nombre = datosRegistroPaciente.nombre();  
+        this.telefono = datosRegistroPaciente.telefono();  
+        this.capital = datosRegistroPaciente.capital();  
+        this.pais = datosRegistroPaciente.pais();  
+        this.direccion = datosRegistroPaciente.direccion();  
+        this.edad = datosRegistroPaciente.edad();  
+        this.tipoDeSangre = datosRegistroPaciente.tipoDeSangre();  
+        this.idioma = datosRegistroPaciente.idioma();  
+        //this.documento = datosRegistroPaciente.documento();
+        this.estadoCivil = datosRegistroPaciente.estadoCivil().getEstadoCivil();  
+        this.hijos = datosRegistroPaciente.hijos();  
     }
 
-    public int getId_paciente() {
-        return id_paciente;
-    }
-
-    public Genero getGenero() {
-        return genero;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public String getCapital() {
-        return capital;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public String getTipoDeSangre() {
-        return tipoDeSangre;
-    }
-
-    public String getIdioma() {
-        return idioma;
-    }
-
-    public EstadoCivil getEstadoCivil() {
-        return estadoCivil;
-    }
-
-    public int getHijos() {
-        return hijos;
-    }
 }
-
-
