@@ -3,8 +3,11 @@ package com.equipo_c24_38.backend.service;
 import com.equipo_c24_38.backend.mapper.HistorialClinicoMapper;
 import com.equipo_c24_38.backend.model.dto.HistorialClinicoDTO;
 import com.equipo_c24_38.backend.model.entity.HistorialClinico;
+import com.equipo_c24_38.backend.model.entity.Medico;
+import com.equipo_c24_38.backend.model.entity.Paciente;
 import com.equipo_c24_38.backend.repository.HistorialClinicoRepository;
 import com.equipo_c24_38.backend.repository.MedicoRepository;
+import com.equipo_c24_38.backend.repository.PacienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,13 +1,20 @@
 package com.equipo_c24_38.backend.model.entity;
 
 import com.equipo_c24_38.backend.model.dto.DatosRegistrarUsuario;
+import com.equipo_c24_38.backend.model.tiposDatos.TipoUsuario;
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity(name = "Usuario")
 @Table(name = "usuarios")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Usuario {
 
     @Id
@@ -19,43 +26,25 @@ public class Usuario {
     private String email;
     @Column(name = "contrasena")
     private String contrasena;
+    @Column(name = "tipo_usuario")
+    @Enumerated(EnumType.STRING)
+    private TipoUsuario tipoUsuario;
     @CreationTimestamp
     @Column(name = "fecha_registro", updatable = false)
     private LocalDateTime fechaRegistro;
 
-    public Usuario() {
-    }
-
-    public Usuario(String documento, String email, String contrasena) {
+    public Usuario(String documento, String email, String contrasena, TipoUsuario tipoUsario) {
         this.documento = documento;
         this.email = email;
         this.contrasena = contrasena;
+        this.tipoUsuario = tipoUsario;
     }
 
     public Usuario(DatosRegistrarUsuario datosRegistrarUsuario) {
         this.documento = datosRegistrarUsuario.documento();
         this.email = datosRegistrarUsuario.email();
         this.contrasena = datosRegistrarUsuario.contrasena();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public LocalDateTime getFechaRegistro() {
-        return fechaRegistro;
+        this.tipoUsuario = datosRegistrarUsuario.tipoUsuario();
     }
 
 }

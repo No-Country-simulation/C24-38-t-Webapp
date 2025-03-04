@@ -1,7 +1,9 @@
 package com.equipo_c24_38.backend.model.dto;
 
 import com.equipo_c24_38.backend.model.entity.Paciente;
-import jakarta.validation.constraints.Email;
+import com.equipo_c24_38.backend.model.tiposDatos.EstadoCivil;
+import com.equipo_c24_38.backend.model.tiposDatos.Genero;
+import com.equipo_c24_38.backend.model.tiposDatos.Idioma;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -9,9 +11,9 @@ public record DatosRegistroPaciente(
         @NotBlank(message = "{Nombre es obligatorio}")
         String nombre,
         @NotNull(message = "{Genero es obligatorio}")
-        Paciente genero,
+        Genero genero,
         @NotNull(message = "{Telefono es obligatorio}")
-        int telefono,
+        Long telefono,
         @NotBlank(message = "{Ubigeo capital es obligatoria}")
         String capital,
         @NotBlank(message = "{Pais es obligatorio}")
@@ -19,17 +21,15 @@ public record DatosRegistroPaciente(
         @NotBlank(message = "{Direccion es obligatoria}")
         String direccion,
         @NotNull(message = "{edad es obligatorio}")
-        int edad,
+        Integer edad,
         @NotBlank(message = "{Tipo de sangre es obligatorio}")
         String tipoDeSangre,
         @NotBlank(message = "{Idiomas es necesario}")
-        String idioma,
-        //@NotBlank(message = "{Descripcion o historia}")
-        //String documento,
+        Idioma idioma,
         @NotNull(message = "{Estado civil es obligatorio}")
-        Paciente estadoCivil,
+        EstadoCivil estadoCivil,
         @NotNull(message = "{Numero de hijos es obligatorio}")
-        int hijos
+        Integer hijos
 ) {
 }
 

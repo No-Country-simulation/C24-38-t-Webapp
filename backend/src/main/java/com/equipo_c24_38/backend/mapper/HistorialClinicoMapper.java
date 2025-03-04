@@ -9,7 +9,7 @@ public class HistorialClinicoMapper {
 
     public HistorialClinicoDTO toDTO(HistorialClinico historial) {
         HistorialClinicoDTO dto = new HistorialClinicoDTO();
-        dto.setId(historial.getId());
+        dto.setId(historial.getIdHistorialClinico());
         dto.setPacienteId(historial.getPaciente().getId());
         dto.setMedicoId(historial.getMedico().getId());
         dto.setFechaDiagnostico(historial.getFechaDiagnostico());
@@ -20,7 +20,7 @@ public class HistorialClinicoMapper {
 
     public HistorialClinico toEntity(HistorialClinicoDTO dto) {
         HistorialClinico historial = new HistorialClinico();
-        historial.setId(dto.getId());
+        historial.setIdHistorialClinico(dto.getId());
         historial.setFechaDiagnostico(dto.getFechaDiagnostico());
         historial.setDiagnostico(dto.getDiagnostico());
         historial.setTratamiento(dto.getTratamiento());
