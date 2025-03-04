@@ -1,4 +1,4 @@
-package com.equipo_c24_38.backend.model.dto;
+package com.equipo_c24_38.backend.model.tiposDatos;
 
 public enum EstadoCivil {
     CASADO,

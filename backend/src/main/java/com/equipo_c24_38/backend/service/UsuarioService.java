@@ -18,7 +18,7 @@ public class UsuarioService {
 
     public Usuario agregar(DatosRegistrarUsuario datosRegistrarUsuario) {
         Usuario usuario = new Usuario(datosRegistrarUsuario.documento(),
-                datosRegistrarUsuario.email(), datosRegistrarUsuario.contrasena());
+                datosRegistrarUsuario.email(), datosRegistrarUsuario.contrasena(), datosRegistrarUsuario.tipoUsuario());
         return usuarioRepository.save(usuario);
     }
 

@@ -4,7 +4,10 @@ import com.equipo_c24_38.backend.model.dto.DatosRegistrarUsuario;
 import com.equipo_c24_38.backend.model.dto.DatosRespuestaUsuario;
 import com.equipo_c24_38.backend.model.entity.Usuario;
 import com.equipo_c24_38.backend.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springdoc.core.annotations.RouterOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +17,8 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/api/v1", method = RequestMethod.POST)
+@RequestMapping(value = "/api/v1/usuario", method = RequestMethod.POST)
+@Tag(name = "Controlador usuarios")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -23,6 +27,7 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
+    @Operation(summary = "Registra al usuario para iniciar sesión")
     @PostMapping("/registrar")
     @Transactional
     public ResponseEntity<DatosRespuestaUsuario> registrar(@RequestBody @Valid DatosRegistrarUsuario datosRegistrarUsuario) {
@@ -31,6 +36,7 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(datosRespuestaUsuario);
     }
 
+    @Operation(summary = "Revisa si el usuario está registrado para iniciar sesión")
     @PostMapping("/iniciarSesion")
     @Transactional
     public String iniciarSesion(@RequestBody Usuario usuario) {

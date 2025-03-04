@@ -1,8 +1,10 @@
 package com.equipo_c24_38.backend.service;
 
+import com.equipo_c24_38.backend.infra.errores.TipoUsuarioInvalidoException;
 import com.equipo_c24_38.backend.model.dto.DatosRegistroMedico;
 import com.equipo_c24_38.backend.model.entity.Medico;
 import com.equipo_c24_38.backend.model.entity.Usuario;
+import com.equipo_c24_38.backend.model.tiposDatos.TipoUsuario;
 import com.equipo_c24_38.backend.repository.MedicoRepository;
 import com.equipo_c24_38.backend.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,13 @@ public class MedicoService {
     Usuario usuario = usuarioRepository.findById(idUsuario)
         .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-    Medico medico = new Medico(datosRegistroMedico, usuario);
+    if (usuario.getTipoUsuario() == TipoUsuario.MEDICO) {
+      Medico medico = new Medico(datosRegistroMedico, usuario);
 
-    return medicoRepository.save(medico);
+      return medicoRepository.save(medico);
+    } else {
+      throw new TipoUsuarioInvalidoException("El usuario no es de tipo MEDICO");
+    }
+
   }
 }

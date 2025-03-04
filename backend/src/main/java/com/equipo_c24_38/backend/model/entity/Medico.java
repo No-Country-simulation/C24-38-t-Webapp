@@ -1,18 +1,16 @@
 package com.equipo_c24_38.backend.model.entity;
 
 import com.equipo_c24_38.backend.model.dto.DatosRegistroMedico;
-import com.equipo_c24_38.backend.model.dto.Especialidad;
-import com.equipo_c24_38.backend.model.dto.Genero;
+import com.equipo_c24_38.backend.model.tiposDatos.Especialidad;
+import com.equipo_c24_38.backend.model.tiposDatos.Genero;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
 public class Medico {
@@ -31,7 +29,7 @@ public class Medico {
   @Enumerated(EnumType.STRING)
   private Genero genero;
 
-  private int telefono;
+  private Long telefono;
 
   @Enumerated(EnumType.STRING)
   private Especialidad especialidad;

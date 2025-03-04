@@ -1,5 +1,7 @@
 package com.equipo_c24_38.backend.model.dto;
 
+import com.equipo_c24_38.backend.model.tiposDatos.Especialidad;
+import com.equipo_c24_38.backend.model.tiposDatos.Genero;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,7 +13,7 @@ public record DatosRegistroMedico(
     @NotNull(message = "{Genero es obligatorio}")
     Genero genero,
     @NotBlank(message = "{edad es obligatorio}")
-    Integer telefono,
+    Long telefono,
     @NotNull
     @NotNull(message = "{Especialidad es obligatorio}")
     Especialidad especialidad,

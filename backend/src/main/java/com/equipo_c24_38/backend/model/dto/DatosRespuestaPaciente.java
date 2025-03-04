@@ -1,21 +1,22 @@
 package com.equipo_c24_38.backend.model.dto;
 
 import com.equipo_c24_38.backend.model.entity.Paciente;
-import java.time.LocalDateTime;
+import com.equipo_c24_38.backend.model.tiposDatos.EstadoCivil;
+import com.equipo_c24_38.backend.model.tiposDatos.Genero;
+import com.equipo_c24_38.backend.model.tiposDatos.Idioma;
 
 public record DatosRespuestaPaciente(
         String nombre,
         Genero genero,
-        int telefono,
+        Long telefono,
         String capital,
         String pais,
         String direccion,
-        int edad,
+        Integer edad,
         String tipoDeSangre,
-        String idioma,
-        //String documento,
+        Idioma idioma,
         EstadoCivil estadoCivil,
-        int hijos
+        Integer hijos
 ) {
     public DatosRespuestaPaciente(Paciente paciente) {
         this(
@@ -28,7 +29,6 @@ public record DatosRespuestaPaciente(
                 paciente.getEdad(),
                 paciente.getTipoDeSangre(),
                 paciente.getIdioma(),
-                //paciente.getDocumento(),
                 paciente.getEstadoCivil(),
                 paciente.getHijos()
         );
