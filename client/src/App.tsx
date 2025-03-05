@@ -6,7 +6,19 @@ import WelcomeScreen from "./pages/WelcomeScreen";
 import Menu from "./components/Menu";
 import MedicalHistory from "./pages/MedicalHistory";
 import ScheduleAppointments from "./pages/ScheduleAppointments";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, 
+      refetchOnWindowFocus: false,
+    },
+  }
+})
 export default function App() {
   const location = useLocation();
 
@@ -15,7 +27,7 @@ export default function App() {
   const showMenu = !noMenuRoutes.includes(location.pathname);
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       {showMenu && <Menu />}
       <Routes>
         <Route path="/" element={<WelcomeScreen />} />
@@ -25,6 +37,6 @@ export default function App() {
         <Route path="/medical-history" element={<MedicalHistory />} />
         <Route path="/schedule-appointments" element={<ScheduleAppointments />} />
       </Routes>
-    </>
+    </QueryClientProvider>
   );
 }
