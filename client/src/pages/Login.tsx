@@ -1,3 +1,4 @@
+import { useAuth } from "@/hooks/useAuth";
 import React, { useState } from "react";
 
 interface FormData {
@@ -10,7 +11,7 @@ const Login = () => {
     email: "",
     contrasena: "",
   });
-
+  const { login, isLoginLoading, loginError } = useAuth();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -21,6 +22,10 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    login({
+      email: formData.email,
+      password: formData.contrasena
+    });
   };
 
   return (
@@ -67,6 +72,11 @@ const Login = () => {
                 />
               </div>
             </div>
+            {loginError && (
+              <p className="text-red-500 text-center">
+                Error de inicio de sesión. Por favor, verifica tus credenciales.
+              </p>
+            )}
 
             <p className="text-[16px] text-center">¿Olvidaste tu contraseña?</p>
             <div className="text-center mt-24">
@@ -74,7 +84,7 @@ const Login = () => {
                 type="submit"
                 className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-3 px-12 rounded-[20px] transition duration-300 transform hover:scale-105 cursor-pointer"
               >
-                Ingresar
+                {isLoginLoading ? 'Cargando...' : 'Ingresar'}
               </button>
             </div>
           </form>
