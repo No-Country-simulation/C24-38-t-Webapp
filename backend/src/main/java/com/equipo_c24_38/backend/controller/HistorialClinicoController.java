@@ -16,7 +16,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/v1/historiales")
+@RequestMapping(value = "/api/v1/historiales", method = {RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE})
 @RequiredArgsConstructor
 @Tag(name = "Controlador historiales clinicos")
 public class HistorialClinicoController {
