@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1/medicos")
+@RequestMapping(value = "/api/v1/medicos", method = {RequestMethod.POST, RequestMethod.GET})
 @Tag(name = "Controlador médicos")
 public class MedicoController {
 
@@ -32,6 +33,7 @@ public class MedicoController {
       return ResponseEntity.ok(datosRespuestaMedico);
     }
 
+    @Operation(summary = "Muestra solo los nombres de los médicos")
     @GetMapping("/listarPorNombre")
     public ResponseEntity<List<String>> listarMedicos() {
         List<String> nombresMedicos = medicoService.listarMedicoPorNombre();

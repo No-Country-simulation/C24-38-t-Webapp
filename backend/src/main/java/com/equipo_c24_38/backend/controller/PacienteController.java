@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1/pacientes")
+@RequestMapping(value = "/api/v1/pacientes", method = RequestMethod.POST)
 @Tag(name = "Controlador pacientes")
 public class PacienteController {
 
@@ -25,6 +26,7 @@ public class PacienteController {
 
     @Operation(summary = "Registra a un paciente, incluso detecta si el usuario se registró como paciente")
     @PostMapping("/registrar")
+    @Transactional
     public ResponseEntity<?> registrarPaciente(
             @RequestBody DatosRegistroPaciente datosRegistroPaciente,
             @RequestParam Long idUsuario){
