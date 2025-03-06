@@ -3,7 +3,7 @@ import "../assets/styles/menu.css";
 
 const Menu = () => {
   return (
-    <nav className="menu-container">
+    <nav className="menu-container z-50">
       <div className="menu-box">
         <Link to="/page1" className="menu-item">
           <img src="/icons/client_menu.svg" alt="Página 1" />

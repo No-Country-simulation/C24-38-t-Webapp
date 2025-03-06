@@ -7,23 +7,21 @@ import WelcomeScreen from "./pages/WelcomeScreen";
 import Menu from "./components/Menu";
 import MedicalHistory from "./pages/MedicalHistory";
 import ScheduleAppointments from "./pages/ScheduleAppointments";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ScheduleCalendar from "./pages/ScheduleCalendar";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5, 
+      staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
     },
-  }
-})
+  },
+});
 export default function App() {
   const location = useLocation();
 
-  const noMenuRoutes = ["/login", "/register", "/auth"];
+  const noMenuRoutes = ["/login", "/register", "/auth", "/"];
 
   const showMenu = !noMenuRoutes.includes(location.pathname);
 
@@ -37,7 +35,11 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/medical-history" element={<MedicalHistory />} />
-        <Route path="/schedule-appointments" element={<ScheduleAppointments />} />
+        <Route
+          path="/schedule-appointments"
+          element={<ScheduleAppointments />}
+        />
+        <Route path="/schedule/:doctorName" element={<ScheduleCalendar />} />
       </Routes>
     </QueryClientProvider>
   );

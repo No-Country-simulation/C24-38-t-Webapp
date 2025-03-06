@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const MedicalHistory = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen w-full overflow-hidden bg-white">
+    <div className="flex justify-center items-center min-h-screen w-full overflow-hidden bg-white pb-24 md:pb-0">
       <div className="relative w-full h-screen">
         <div className="absolute inset-0 flex flex-col md:items-center p-4">
           <div className="max-w-2xl space-y-12 text-lg">
@@ -34,6 +34,11 @@ const MedicalHistory = () => {
             <button className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-4 px-12 rounded-[10px] transition duration-300 transform hover:scale-105 text-lg">
               PDF historia clínica
             </button>
+          </div>
+          <div className="mt-12 text-center">
+            <Link to={"/schedule-appointments"} className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-4 px-12 rounded-[10px] transition duration-300 transform hover:scale-105 text-lg">
+              Reservar turno
+            </Link>
           </div>
         </div>
       </div>
