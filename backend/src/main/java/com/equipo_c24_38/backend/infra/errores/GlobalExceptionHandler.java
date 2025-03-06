@@ -13,4 +13,9 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(NombreMedicoNoEncontradoException.class)
+    public ResponseEntity<String> handleTNombreMedicoNoEncontradoException(NombreMedicoNoEncontradoException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }

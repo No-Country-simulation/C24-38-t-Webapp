@@ -8,7 +8,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/medicos")
@@ -20,12 +23,24 @@ public class MedicoController {
 
     @Operation(summary = "Registra a un médico, incluso detecta si el usuario se registró como médico")
     @PostMapping("/registrar")
+    @Transactional
     public ResponseEntity<?> registrarMedico(
         @RequestBody DatosRegistroMedico datosRegistroMedico,
         @RequestParam Long idUsuario) {
       Medico medico = medicoService.registrarMedico(datosRegistroMedico, idUsuario);
       DatosRespuestaMedico datosRespuestaMedico=new DatosRespuestaMedico(medico);
       return ResponseEntity.ok(datosRespuestaMedico);
+    }
+
+    @GetMapping("/listarPorNombre")
+    public ResponseEntity<List<String>> listarMedicos() {
+        List<String> nombresMedicos = medicoService.listarMedicoPorNombre();
+
+        if (nombresMedicos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(nombresMedicos);
+        }
     }
 
 }
