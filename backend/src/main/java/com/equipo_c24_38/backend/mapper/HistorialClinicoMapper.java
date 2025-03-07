@@ -11,7 +11,6 @@ public class HistorialClinicoMapper {
         HistorialClinicoDTO dto = new HistorialClinicoDTO();
         dto.setId(historial.getIdHistorialClinico());
         dto.setPacienteId(historial.getPaciente().getId());
-        dto.setMedicoId(historial.getMedico().getId());
         dto.setFechaDiagnostico(historial.getFechaDiagnostico());
         dto.setDiagnostico(historial.getDiagnostico());
         dto.setTratamiento(historial.getTratamiento());

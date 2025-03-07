@@ -12,14 +12,13 @@ public record DatosRespuestaUsuario(
         String documento,
         String email,
         String contrasena,
-        TipoUsuario tipoUsuario,
         LocalDateTime fechaRegistro
 
     ) {
 
     public DatosRespuestaUsuario(Usuario usuario) {
         this(usuario.getId(), usuario.getDocumento(), usuario.getEmail(),
-                usuario.getContrasena(), usuario.getTipoUsuario(), usuario.getFechaRegistro());
+                usuario.getContrasena(), usuario.getFechaRegistro());
     }
 
 }

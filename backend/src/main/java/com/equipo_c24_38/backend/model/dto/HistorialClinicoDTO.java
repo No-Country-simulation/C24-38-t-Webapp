@@ -16,9 +16,6 @@ public class HistorialClinicoDTO {
     @NotNull(message = "El ID del paciente es obligatorio")
     private Long pacienteId;
 
-    @NotNull(message = "El ID del médico es obligatorio")
-    private Long medicoId;
-
     @NotNull(message = "La fecha de diagnóstico es obligatoria")
     private LocalDateTime fechaDiagnostico;
 

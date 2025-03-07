@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-
-
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/api/v1/historiales", method = {RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE})
+@RequestMapping(value = "/api/v1/historiales")
 @RequiredArgsConstructor
 @Tag(name = "Controlador historiales clinicos")
 public class HistorialClinicoController {

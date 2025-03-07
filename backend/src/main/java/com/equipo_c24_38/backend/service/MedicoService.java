@@ -22,23 +22,13 @@ public class MedicoService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    private final PacienteRepository pacienteRepository;
-
-    public MedicoService(PacienteRepository pacienteRepository) {
-        this.pacienteRepository = pacienteRepository;
-    }
-
     public Medico registrarMedico(DatosRegistroMedico datosRegistroMedico, Long idUsuario) {
       Usuario usuario = usuarioRepository.findById(idUsuario)
           .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-      if (usuario.getTipoUsuario() == TipoUsuario.MEDICO) {
-        Medico medico = new Medico(datosRegistroMedico, usuario);
+       Medico medico = new Medico(datosRegistroMedico, usuario);
 
-        return medicoRepository.save(medico);
-      } else {
-        throw new TipoUsuarioInvalidoException("El usuario no es de tipo MEDICO");
-      }
+       return medicoRepository.save(medico);
 
     }
 
