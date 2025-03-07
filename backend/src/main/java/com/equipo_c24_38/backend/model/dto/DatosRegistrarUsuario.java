@@ -17,8 +17,6 @@ public record DatosRegistrarUsuario(
         String email,
         @NotBlank
         String contrasena,
-        @NotNull
-        TipoUsuario tipoUsuario,
         @DateTimeFormat(pattern = "dd/MM/yyyy")
         LocalDateTime fechaRegistro
 

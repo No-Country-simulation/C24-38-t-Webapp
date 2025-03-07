@@ -3,10 +3,8 @@ package com.equipo_c24_38.backend.service;
 import com.equipo_c24_38.backend.mapper.HistorialClinicoMapper;
 import com.equipo_c24_38.backend.model.dto.HistorialClinicoDTO;
 import com.equipo_c24_38.backend.model.entity.HistorialClinico;
-import com.equipo_c24_38.backend.model.entity.Medico;
 import com.equipo_c24_38.backend.model.entity.Paciente;
 import com.equipo_c24_38.backend.repository.HistorialClinicoRepository;
-import com.equipo_c24_38.backend.repository.MedicoRepository;
 import com.equipo_c24_38.backend.repository.PacienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,6 @@ public class HistorialClinicoService {
 
     private final HistorialClinicoRepository historialClinicoRepository;
     private final PacienteRepository pacienteRepository;
-    private final MedicoRepository medicoRepository;
     private final HistorialClinicoMapper historialClinicoMapper;
 
     // Obtener todos los historiales
@@ -44,11 +41,8 @@ public class HistorialClinicoService {
         // Asignar paciente y médico
         Paciente paciente = pacienteRepository.findById(dto.getPacienteId())
                 .orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
-        Medico medico = medicoRepository.findById(dto.getMedicoId())
-                .orElseThrow(() -> new RuntimeException("Médico no encontrado"));
 
         historial.setPaciente(paciente);
-        historial.setMedico(medico);
 
         historial = historialClinicoRepository.save(historial);
         return historialClinicoMapper.toDTO(historial);

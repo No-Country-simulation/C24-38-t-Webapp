@@ -11,7 +11,4 @@ public interface HistorialClinicoRepository extends JpaRepository<HistorialClini
 
     // Buscar historiales por ID de paciente
     List<HistorialClinico> findByPacienteId(Long pacienteId);
-
-    // Buscar historiales por ID de médico
-    List<HistorialClinico> findByMedicoId(Long medicoId);
 }

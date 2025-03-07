@@ -20,11 +20,8 @@ public class PacienteService {
     public Paciente RegistrarPaciente(DatosRegistroPaciente datosRegistroPaciente, Long idUsuario) {
         Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-        if (usuario.getTipoUsuario() == TipoUsuario.PACIENTE) {
-            Paciente paciente = new Paciente(datosRegistroPaciente, usuario);
-            return pacienteRepository.save(paciente);
-        } else {
-            throw new TipoUsuarioInvalidoException("El usuario no es de tipo PACIENTE");
-        }
+
+        Paciente paciente = new Paciente(datosRegistroPaciente, usuario);
+        return pacienteRepository.save(paciente);
     }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/api/v1/medicos", method = {RequestMethod.POST, RequestMethod.GET})
+@RequestMapping(value = "/api/v1/medicos")
 @Tag(name = "Controlador médicos")
 public class MedicoController {
 

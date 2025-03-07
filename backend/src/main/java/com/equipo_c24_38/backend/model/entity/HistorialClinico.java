@@ -22,10 +22,6 @@ public class HistorialClinico {
     @JoinColumn(name = "id_paciente", nullable = false)
     private Paciente paciente;
 
-    @ManyToOne
-    @JoinColumn(name = "id_medico", nullable = false)
-    private Medico medico;
-
     @Column(nullable = false)
     private LocalDateTime fechaDiagnostico;
 

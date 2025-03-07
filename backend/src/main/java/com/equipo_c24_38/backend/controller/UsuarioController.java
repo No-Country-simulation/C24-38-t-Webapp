@@ -7,7 +7,6 @@ import com.equipo_c24_38.backend.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.springdoc.core.annotations.RouterOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +16,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "/api/v1/usuario", method = RequestMethod.POST)
+@RequestMapping(value = "/api/v1/usuario")
 @Tag(name = "Controlador usuarios")
 public class UsuarioController {
 
