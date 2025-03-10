@@ -1,37 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const [button1Clicked, setButton1Clicked] = useState(false);
-  const [button2Clicked, setButton2Clicked] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-4 overflow-y-auto space-y-4">
-
-      <h1 className="text-3xl font-bold mb-6">¡Bienvenido!</h1>
+      <h1 className="text-3xl font-bold mb-6 text-[#4EA7A7]">¡Bienvenido!</h1>
 
       <button
         className="w-[279px] h-[79px] bg-[#4EA7A7] text-white text-lg rounded-[10px] border border-gray-200 mb-4"
-        onClick={() => setButton1Clicked(!button1Clicked)}
+        onClick={() => navigate("/clinical-history")}
       >
-        {button1Clicked ? "Historial Clinico" : "Historial Clinico"}
+        Historial Clinico
       </button>
       <button
         className="w-[279px] h-[79px] bg-[#4EA7A7] text-white text-lg rounded-[10px] border border-gray-200 mb-8"
-        onClick={() => setButton2Clicked(!button2Clicked)}
+        onClick={() => navigate("/datos-personales")}
       >
-        {button2Clicked ? "Datos personales" : "Datos personales"}
+        Datos personales
       </button>
 
-      <div className="w-[360px] h-[197px] flex items-center border-2 border-[#4EA7A7] rounded-[15px] p-4 mb-4 bg-white">
+      <Link to="/schedule-appointments" className="w-[360px] h-[197px] flex items-center justify-center border-2 border-[#4EA7A7] rounded-[15px] p-4 mb-4 bg-white">
         <img
           src="/src/assets/images/home/turnos.svg"
           alt="Icono"
           className="w-1/3 h-auto object-contain"
         />
         <span className="ml-4 text-lg font-semibold">Turnos</span>
-      </div>
+      </Link>
 
-      <div className="w-[360px] h-[197px] flex items-center border-2 border-[#4EA7A7] rounded-[15px] p-4 bg-white">
+      <div className="w-[360px] h-[197px] flex items-center justify-center border-2 border-[#4EA7A7] rounded-[15px] p-4 bg-white">
         <img
           src="/src/assets/images/home/pendientes.svg"
           alt="Icono"

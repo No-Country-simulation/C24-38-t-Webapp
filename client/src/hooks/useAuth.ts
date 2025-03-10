@@ -11,7 +11,7 @@ export const useAuth = () => {
         mutationFn: (credentials: LoginCredentials) => AuthService.login(credentials),
         onSuccess: (data) => {
             localStorage.setItem('token', JSON.stringify(data.message))
-            navigate("/medical-history")
+            navigate("/home")
             queryClient.invalidateQueries({ queryKey: ['user-data'] })
         },
         onError: (error) => {

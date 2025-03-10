@@ -35,11 +35,6 @@ const MedicalHistory = () => {
               PDF historia clínica
             </button>
           </div>
-          <div className="mt-12 text-center">
-            <Link to={"/schedule-appointments"} className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-4 px-12 rounded-[10px] transition duration-300 transform hover:scale-105 text-lg">
-              Reservar turno
-            </Link>
-          </div>
         </div>
       </div>
     </div>

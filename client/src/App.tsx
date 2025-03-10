@@ -9,6 +9,7 @@ import MedicalHistory from "./pages/MedicalHistory";
 import ScheduleAppointments from "./pages/ScheduleAppointments";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ScheduleCalendar from "./pages/ScheduleCalendar";
+import ClinicalHistory from "./pages/clinicalHistory";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/clinical-history" element={<ClinicalHistory />} />
         <Route path="/medical-history" element={<MedicalHistory />} />
         <Route
           path="/schedule-appointments"
