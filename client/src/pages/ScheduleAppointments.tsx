@@ -1,21 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-interface Specialties {
-  [key: string]: string[];
-}
 
 const ScheduleAppointments = () => {
   const [showModal, setShowModal] = useState(false);
-  const [selectedSpecialty, setSelectedSpecialty] = useState<string>('');
+  const [doctors, setDoctors] = useState<string[]>([]);
   const navigate = useNavigate();
-  
-  const specialties: Specialties = {
-    'Cardiología': ['Dr. García', 'Dr. Pérez'],
-    'Dermatología': ['Dra. Martínez', 'Dr. Rodríguez'],
-    'Pediatría': ['Dra. Fernández', 'Dr. López'],
-    'Traumatología': ['Dr. Stefano', 'Dra. Romero']
-  };
+
+  useEffect(() => {
+    if (showModal) {
+    
+      fetch('https://backend-medlife-production.up.railway.app/api/v1/medicos/listarPorNombre')
+        .then((response) => response.json())
+        .then((data) => setDoctors(data)) 
+        .catch((error) => console.error("Error fetching doctors:", error));
+    }
+  }, [showModal]);
 
   const handleDoctorSelect = (doctor: string) => {
     navigate(`/schedule/${encodeURIComponent(doctor)}`);
@@ -32,7 +31,7 @@ const ScheduleAppointments = () => {
             </h3>
 
             <div className="mt-12 text-center flex justify-center">
-              <button 
+              <button
                 onClick={() => setShowModal(true)}
                 className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-4 px-12 rounded-[10px] transition duration-300 transform hover:scale-105 text-lg flex justify-center items-center gap-2"
               >
@@ -51,36 +50,20 @@ const ScheduleAppointments = () => {
                 <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="text-xl font-bold text-[#4EA7A7]">
-                      Selecciona una especialidad
+                      Selecciona un médico
                     </h3>
-                    <button 
-                      onClick={() => {
-                        setShowModal(false);
-                        setSelectedSpecialty('');
-                      }}
+                    <button
+                      onClick={() => setShowModal(false)}
                       className="text-gray-500 hover:text-gray-700"
                     >
                       ✕
                     </button>
                   </div>
-                  
-                  <select
-                    value={selectedSpecialty}
-                    onChange={(e) => setSelectedSpecialty(e.target.value)}
-                    className="w-full p-3 border border-[#4EA7A7] rounded-lg mb-4"
-                  >
-                    <option value="">Seleccione una especialidad</option>
-                    {Object.keys(specialties).map((specialty) => (
-                      <option key={specialty} value={specialty}>
-                        {specialty}
-                      </option>
-                    ))}
-                  </select>
 
                   <div className="max-h-60 overflow-y-auto">
-                    {selectedSpecialty && specialties[selectedSpecialty]?.map((doctor, index) => (
+                    {doctors.map((doctor, index) => (
                       <button
-                        key={index}
+                        key={index} // Usamos el índice como clave
                         onClick={() => handleDoctorSelect(doctor)}
                         className="w-full p-3 mb-2 text-left rounded-lg bg-[#4EA7A7]/10 hover:bg-[#4EA7A7]/20 transition-colors border border-[#4EA7A7]"
                       >

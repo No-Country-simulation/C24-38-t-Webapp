@@ -9,7 +9,7 @@ import MedicalHistory from "./pages/MedicalHistory";
 import ScheduleAppointments from "./pages/ScheduleAppointments";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ScheduleCalendar from "./pages/ScheduleCalendar";
-import ClinicalHistory from "./pages/clinicalHistory";
+import ClinicalHistory from "./pages/ClinicalHistory";
 
 const queryClient = new QueryClient({
   defaultOptions: {
