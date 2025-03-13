@@ -5,7 +5,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-4 overflow-y-auto space-y-4 pb-24">
+    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 overflow-y-auto space-y-4 pb-24">
       <h1 className="text-3xl font-bold mb-6 text-[#4EA7A7]">¡Bienvenido!</h1>
 
       <button

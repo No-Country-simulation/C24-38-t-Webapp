@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import Swal from "sweetalert2";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -10,6 +11,9 @@ const ScheduleCalendar = () => {
   const { doctorName } = useParams<{ doctorName: string }>();
   const [date, setDate] = useState<Value>(new Date());
   const [selectedTime, setSelectedTime] = useState<string>("");
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const timeSlots = ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00"];
 
@@ -17,6 +21,29 @@ const ScheduleCalendar = () => {
     console.log("doctor:", doctorName);
     console.log("fecha:", date);
     console.log("hora:", selectedTime);
+
+    setIsLoading(true);
+    setShowModal(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+
+      Swal.fire({
+        title: "Turno registrado con éxito",
+        icon: "success",
+        // confirmButtonText: "Aceptar",
+       // confirmButtonColor: "#4EA7A7",
+        timer: 2000,
+        timerProgressBar: true,
+      }).then(() => {
+        navigate("/schedule-appointments");
+      });
+    }, 5000);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    navigate("/schedule-appointments");
   };
 
   return (
@@ -76,6 +103,25 @@ const ScheduleCalendar = () => {
           )}
         </div>
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 bg-black/60 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg text-center">
+            {isLoading ? (
+              <div className="flex flex-col items-center p-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4EA7A7] mb-4"></div>
+                <p>Registrando turno...</p>
+              </div>
+            ) : (
+              <div>
+                <p className="text-xl font-semibold mb-4">
+                  Turno registrado con éxito
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

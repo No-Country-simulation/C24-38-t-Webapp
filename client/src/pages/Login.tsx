@@ -73,7 +73,7 @@ const Login = () => {
               </div>
             </div>
             {loginError && (
-              <p className="text-red-500 text-center">
+              <p className="text-red-500 text-center w-full max-w-[300px]">
                 Error de inicio de sesión. Por favor, verifica tus credenciales.
               </p>
             )}
