@@ -7,14 +7,11 @@ interface FormData {
 }
 
 const Login = () => {
-  // Estado inicial con valores de ejemplo
   const [formData, setFormData] = useState<FormData>({
-    email: "adrian@gmail.com", // Email de ejemplo
-    contrasena: "123456",      // Contraseña de ejemplo
+    email: "",
+    contrasena: "",
   });
-
   const { login, isLoginLoading, loginError } = useAuth();
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -46,7 +43,7 @@ const Login = () => {
             <div>
               <label htmlFor="email">Email</label>
               <div className="h-[48px] w-[320px] bg-white border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 flex gap-4">
-                <img src="./icons/email_icon.png" alt="Email Icon" />
+                <img src="./icons/email_icon.png" />
                 <input
                   type="email"
                   id="email"
@@ -62,7 +59,7 @@ const Login = () => {
             <div>
               <label htmlFor="contrasena">Contraseña</label>
               <div className="h-[48px] w-[320px] bg-white border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 flex gap-4">
-                <img src="./icons/password_icon.png" alt="Password Icon" />
+                <img src="./icons/password_icon.png" />
                 <input
                   type="password"
                   id="contrasena"
@@ -87,7 +84,7 @@ const Login = () => {
                 type="submit"
                 className="bg-[#4EA7A7] hover:bg-[#4EA7A7] text-white font-semibold py-3 px-12 rounded-[20px] transition duration-300 transform hover:scale-105 cursor-pointer"
               >
-                {isLoginLoading ? 'Cargando...' : 'Ingresar'}
+                {isLoginLoading ? "Cargando..." : "Ingresar"}
               </button>
             </div>
           </form>
