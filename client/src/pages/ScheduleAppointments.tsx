@@ -22,7 +22,7 @@ const ScheduleAppointments = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen w-full overflow-hidden bg-white">
+    <div className="flex justify-center items-center min-h-screen w-full overflow-hidden bg-white pb-12">
       <div className="relative w-full h-screen">
         <div className="absolute inset-0 flex flex-col md:items-center p-4">
           <div className="max-w-2xl space-y-12 text-lg">

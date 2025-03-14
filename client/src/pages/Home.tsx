@@ -5,7 +5,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 overflow-y-auto space-y-4 pb-24">
+    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 overflow-y-auto space-y-4 pb-24 p-4">
       <h1 className="text-3xl font-bold mb-6 text-[#4EA7A7]">¡Bienvenido!</h1>
 
       <button
@@ -21,7 +21,7 @@ export default function Home() {
         Datos personales
       </button>
 
-      <Link to="/schedule-appointments" className="max-w-[360px] w-full h-[197px] flex items-center justify-center border-2 border-[#4EA7A7] rounded-[15px] p-4 mb-4 bg-white mx-4">
+      <Link to="/schedule-appointments" className="max-w-[350px] w-full h-[197px] flex items-center justify-center border-2 border-[#4EA7A7] rounded-[15px] mb-4 bg-white">
         <img
           src="/src/assets/images/home/turnos.svg"
           alt="Icono"
@@ -30,7 +30,7 @@ export default function Home() {
         <span className="ml-4 text-lg font-semibold">Turnos</span>
       </Link>
 
-      <div className="max-w-[360px] w-full h-[197px] flex items-center justify-center border-2 border-[#4EA7A7] rounded-[15px] p-4 bg-white  mx-4">
+      <div className="max-w-[350px] w-full h-[197px] flex items-center justify-center border-2 border-[#4EA7A7] rounded-[15px] bg-white">
         <img
           src="/src/assets/images/home/pendientes.svg"
           alt="Icono"

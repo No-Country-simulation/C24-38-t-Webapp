@@ -7,11 +7,14 @@ interface FormData {
 }
 
 const Login = () => {
+  // Estado inicial con valores de ejemplo
   const [formData, setFormData] = useState<FormData>({
-    email: "",
-    contrasena: "",
+    email: "adrian@gmail.com", // Email de ejemplo
+    contrasena: "123456",      // Contraseña de ejemplo
   });
+
   const { login, isLoginLoading, loginError } = useAuth();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,7 +27,7 @@ const Login = () => {
     e.preventDefault();
     login({
       email: formData.email,
-      password: formData.contrasena
+      password: formData.contrasena,
     });
   };
 
@@ -43,7 +46,7 @@ const Login = () => {
             <div>
               <label htmlFor="email">Email</label>
               <div className="h-[48px] w-[320px] bg-white border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 flex gap-4">
-                <img src="./icons/email_icon.png" />
+                <img src="./icons/email_icon.png" alt="Email Icon" />
                 <input
                   type="email"
                   id="email"
@@ -59,7 +62,7 @@ const Login = () => {
             <div>
               <label htmlFor="contrasena">Contraseña</label>
               <div className="h-[48px] w-[320px] bg-white border border-gray-300 rounded-md shadow-sm p-2 focus:ring-2 focus:ring-blue-500 flex gap-4">
-                <img src="./icons/password_icon.png" />
+                <img src="./icons/password_icon.png" alt="Password Icon" />
                 <input
                   type="password"
                   id="contrasena"

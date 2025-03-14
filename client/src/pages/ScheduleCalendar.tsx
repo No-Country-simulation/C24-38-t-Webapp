@@ -32,7 +32,7 @@ const ScheduleCalendar = () => {
         title: "Turno registrado con éxito",
         icon: "success",
         // confirmButtonText: "Aceptar",
-       // confirmButtonColor: "#4EA7A7",
+        // confirmButtonColor: "#4EA7A7",
         timer: 2000,
         timerProgressBar: true,
       }).then(() => {
@@ -47,7 +47,7 @@ const ScheduleCalendar = () => {
   };
 
   return (
-    <div className="h-full bg-white p-8 max-w-4xl mx-auto pb-32 md:pb-0">
+    <div className="h-full bg-white p-2 max-w-4xl mx-auto pb-24 md:pb-0">
       <Link
         to="/schedule-appointments"
         className="text-[#4EA7A7] hover:underline mb-8 inline-block"
@@ -55,18 +55,20 @@ const ScheduleCalendar = () => {
         ← Volver atrás
       </Link>
 
-      <h2 className="text-3xl font-bold text-[#4EA7A7] mb-8">
+      <h2 className="text-2xl font-bold text-[#4EA7A7] mb-8">
         Reservar cita con {decodeURIComponent(doctorName || "")}
       </h2>
 
       <div className="grid md:grid-cols-2 gap-8">
-        <div>
-          <Calendar
-            onChange={setDate}
-            value={date}
-            minDate={new Date()}
-            className="border-[#4EA7A7] rounded-lg p-4"
-          />
+        <div className="flex justify-center items-center">
+          <div className="w-full max-w-[350px]">
+            <Calendar
+              onChange={setDate}
+              value={date}
+              minDate={new Date()}
+              className="border-[#4EA7A7] rounded-lg p-4"
+            />
+          </div>
         </div>
 
         <div>

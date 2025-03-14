@@ -5,7 +5,7 @@ export default function ClinicalHistory() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-4 overflow-y-auto space-y-4">
+    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-100 overflow-y-auto space-y-4 pb-24 p-4">
       <div className="max-w-2xl space-y-12 text-lg">
         <h3 className="text-2xl font-bold mb-4 text-[#4EA7A7]">
           Historial Clínico
