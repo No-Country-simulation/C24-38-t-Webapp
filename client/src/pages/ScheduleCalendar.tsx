@@ -41,10 +41,10 @@ const ScheduleCalendar = () => {
     }, 5000);
   };
 
-  const closeModal = () => {
-    setShowModal(false);
-    navigate("/schedule-appointments");
-  };
+  // const closeModal = () => {
+  //   setShowModal(false);
+  //   navigate("/schedule-appointments");
+  // };
 
   return (
     <div className="h-full bg-white p-2 max-w-4xl mx-auto pb-24 md:pb-0">
