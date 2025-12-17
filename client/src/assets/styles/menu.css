@@ -1,0 +1,50 @@
+.menu-container {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    padding: 10px;
+  }
+ 
+  .menu-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white; 
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .menu-item img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+  }
+  
+  .menu-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* .emergency {
+    transform: translateY(-10px);
+  } */
+  
+  .emergency img {
+    width: 60px;  
+    height: auto;
+    filter: invert(17%) sepia(96%) saturate(7493%) hue-rotate(357deg) brightness(96%) contrast(108%);
+  }
+  
